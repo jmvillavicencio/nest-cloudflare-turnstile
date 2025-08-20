@@ -6,12 +6,14 @@
   "private": false,
   "license": "MIT",
   "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
   "scripts": {
-    "build": "npx tsc",
+    "build": "tsc -p tsconfig.build.json",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "prepare": "husky",
+    "prepare": "npm run build",
     "test": "",
     "release": "changelogen --release"
   },
