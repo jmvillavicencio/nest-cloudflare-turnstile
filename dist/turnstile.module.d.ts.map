@@ -1,0 +1,1 @@
+{"version":3,"file":"turnstile.module.d.ts","sourceRoot":"","sources":["../src/turnstile.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,aAAa,EAA4B,MAAM,gBAAgB,CAAC;AAGzE,OAAO,EACL,sBAAsB,EACtB,iBAAiB,EAClB,MAAM,wBAAwB,CAAC;AAOhC,qBAEa,eAAe;WACZ,OAAO,CAAC,OAAO,EAAE,iBAAiB,GAAG,aAAa;WAclD,YAAY,CAAC,EACzB,OAAO,EACP,MAAM,EACN,UAAU,GACX,EAAE,sBAAsB,GAAG,aAAa;CAc1C"}
