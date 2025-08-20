@@ -16,6 +16,15 @@ export class TurnstileGuard implements CanActivate {
     @Inject('TurnstileServiceOptions')
     private readonly options: ITurnstileOptions,
   ) {}
+
+  throwError(error) {
+    if (this.options.onError) {
+      return this.options.onError(error);
+    }
+
+    throw error;
+  }
+
   async canActivate(context: ExecutionContext): Promise<boolean> {
     /**
      * Skip Cloudflare Turnstile validation if `skipIf` is true.
@@ -26,10 +35,10 @@ export class TurnstileGuard implements CanActivate {
 
     const request = context.switchToHttp().getRequest();
     const responseToken = this.options.tokenResponse(request);
-    if (!responseToken) throw new BadRequestException(Messages.MISSING);
+    if (!responseToken) this.throwError(new BadRequestException(Messages.MISSING));
     const { success } =
       await this.turnstileService.validateToken(responseToken);
-    if (!success) throw new BadRequestException(Messages.INVALID);
+    if (!success) this.throwError(new BadRequestException(Messages.INVALID));
     return success;
   }
 }
